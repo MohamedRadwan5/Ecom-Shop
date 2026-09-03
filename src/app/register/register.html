@@ -1,0 +1,146 @@
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="nav-brand">
+    <div class="nav-logo">
+      <span>🛒</span>
+    </div>
+    <span class="nav-brand-name">E-Com Shop</span>
+  </div>
+  <button class="btn-signin" routerLink="/login">Login</button>
+</nav>
+
+<!-- ===== MAIN LAYOUT ===== -->
+<div class="register-page">
+
+  <!-- LEFT PANEL -->
+  <div class="left-panel">
+    <div class="hero-text">
+      <h1>JOIN<br>E-COM<br>SHOP</h1>
+      <ul>
+        <li><span class="dot">•</span> Exclusive Deals</li>
+        <li><span class="dot">•</span> Easy Order Tracking</li>
+        <li><span class="dot">•</span> Personalized Feed</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- RIGHT PANEL -->
+  <div class="right-panel">
+    <h2>Create Account</h2>
+
+    <!-- Alerts -->
+    @if (successMessage()) {
+      <div class="alert alert-success">
+        ✅ {{ successMessage() }}
+        <br><small>Downloaded as <strong>users.json</strong></small>
+      </div>
+    }
+    @if (errorMessage()) {
+      <div class="alert alert-error">❌ {{ errorMessage() }}</div>
+    }
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+
+      <!-- First Name -->
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input id="firstName" type="text" formControlName="firstName"
+          [class.input-error]="isInvalid('firstName')" />
+        @if (isInvalid('firstName')) {
+          <span class="error-msg">
+            @if (f('firstName').hasError('required')) { First name is required. }
+            @else if (f('firstName').hasError('minlength')) { At least 2 characters. }
+            @else if (f('firstName').hasError('pattern')) { Letters only. }
+          </span>
+        }
+      </div>
+
+      <!-- Last Name -->
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input id="lastName" type="text" formControlName="lastName"
+          [class.input-error]="isInvalid('lastName')" />
+        @if (isInvalid('lastName')) {
+          <span class="error-msg">
+            @if (f('lastName').hasError('required')) { Last name is required. }
+            @else if (f('lastName').hasError('minlength')) { At least 2 characters. }
+            @else if (f('lastName').hasError('pattern')) { Letters only. }
+          </span>
+        }
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" type="email" formControlName="email"
+          [class.input-error]="isInvalid('email')" />
+        @if (isInvalid('email')) {
+          <span class="error-msg">
+            @if (f('email').hasError('required')) { Email is required. }
+            @else { Enter a valid email. }
+          </span>
+        }
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="input-icon-wrap">
+          <input id="password" [type]="showPassword() ? 'text' : 'password'"
+            formControlName="password" placeholder="Password"
+            [class.input-error]="isInvalid('password')" />
+          <button type="button" class="eye-btn" (click)="togglePassword()">🔑</button>
+        </div>
+        @if (isInvalid('password')) {
+          <span class="error-msg">
+            @if (f('password').hasError('required')) { Password is required. }
+            @else if (f('password').hasError('minlength')) { At least 8 characters. }
+            @else if (f('password').hasError('weakPassword')) { Add uppercase letter &amp; number. }
+          </span>
+        }
+      </div>
+
+      <!-- Phone Number -->
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input id="phoneNumber" type="tel" formControlName="phoneNumber"
+          placeholder="Date of Birth"
+          [class.input-error]="isInvalid('phoneNumber')" />
+        @if (isInvalid('phoneNumber')) {
+          <span class="error-msg">
+            @if (f('phoneNumber').hasError('required')) { Phone is required. }
+            @else { Enter 10-15 digits. }
+          </span>
+        }
+      </div>
+
+      <!-- Date of Birth + Checkboxes block -->
+      <div class="dob-check-block">
+        <!-- DOB row with orange checkbox -->
+        <label class="dob-row">
+          <input type="checkbox" class="orange-check" checked disabled />
+          <span class="dob-label-text">Date of Birth</span>
+        </label>
+        <input id="dateOfBirth" type="date" formControlName="dateOfBirth"
+          class="dob-hidden-input"
+          [class.input-error]="isInvalid('dateOfBirth')" />
+        @if (isInvalid('dateOfBirth')) {
+          <span class="error-msg">
+            @if (f('dateOfBirth').hasError('required')) { Date of birth is required. }
+            @else if (f('dateOfBirth').hasError('underage')) { Must be 18+. }
+          </span>
+        }
+      </div>
+
+      <!-- Submit -->
+      <button type="submit" class="btn-create" [disabled]="isLoading()">
+        @if (isLoading()) { Creating... } @else { Create Account }
+      </button>
+
+      <p class="login-link">
+        Already have an account? <a routerLink="/login">Log in.</a>
+      </p>
+
+    </form>
+  </div>
+</div>
