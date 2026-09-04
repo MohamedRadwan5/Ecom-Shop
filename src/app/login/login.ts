@@ -63,10 +63,13 @@ export class LoginComponent {
     this.isLoading.set(false);
 
     if (result.success) {
-      this.successMessage.set(result.message);
-      // Can redirect or display success state
-    } else {
-      this.errorMessage.set(result.message);
-    }
+
+  this.router.navigate(['/home']);
+
+} else {
+
+  this.errorMessage.set(result.message);
+
+}
   }
 }
