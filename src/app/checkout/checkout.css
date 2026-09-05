@@ -482,8 +482,13 @@
 }
 
 @media (max-width: 900px) {
+  .checkout-container {
+    padding: 1.8rem 1rem;
+  }
+
   .checkout-layout {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .form-grid, .payment-options-grid {
@@ -493,4 +498,52 @@
   .form-group.full-width {
     grid-column: span 1;
   }
+
+  .checkout-summary-col {
+    position: static;
+  }
 }
+
+@media (max-width: 520px) {
+  .checkout-section {
+    padding: 1.25rem 1rem;
+    border-radius: 12px;
+  }
+
+  .cart-item-row {
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .item-thumbnail {
+    width: 54px;
+    height: 54px;
+  }
+
+  .item-details {
+    flex: 1 1 60%;
+  }
+
+  .item-total-col {
+    text-align: left;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.4rem;
+    border-top: 1px stroke #f1f5f9;
+  }
+
+  .order-meta-box {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .page-title {
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+  }
+}
+

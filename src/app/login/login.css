@@ -316,13 +316,47 @@
 /* ========================================
    RESPONSIVE
    ======================================== */
-@media (max-width: 480px) {
+@media (max-width: 600px) {
+  .login-page {
+    padding: 1.5rem 0.8rem;
+    min-height: calc(100vh - 47px);
+  }
+
   .login-card {
-    padding: 2rem 1.4rem 1.5rem;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    padding: 2rem 1.25rem 1.5rem;
+    border-radius: 14px;
+    max-width: 100%;
   }
 
   .login-title {
-    font-size: 1.8rem;
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
   }
 }
+
+@media (max-width: 480px) {
+  .options-row {
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    justify-content: space-between;
+  }
+
+  .navbar {
+    padding: 0.55rem 0.85rem;
+  }
+
+  .nav-brand-name {
+    font-size: 0.8rem;
+  }
+
+  .btn-register {
+    padding: 0.35rem 0.8rem;
+    font-size: 0.72rem;
+  }
+
+  .input-wrap input {
+    padding: 0.65rem 0.6rem;
+    font-size: 0.85rem;
+  }
+}
+

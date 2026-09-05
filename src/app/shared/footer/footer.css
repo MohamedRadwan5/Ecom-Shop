@@ -102,10 +102,18 @@
   color: #cbd5e1;
 }
 
+@media (max-width: 900px) {
+  .unified-footer-wrapper {
+    padding: 2.5rem 1rem 1.5rem;
+    margin-top: 3rem;
+  }
+}
+
 @media (max-width: 768px) {
   .trust-points-grid {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
   }
 
   .footer-bottom-bar {
@@ -113,4 +121,10 @@
     gap: 1rem;
     text-align: center;
   }
+
+  .legal-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
+

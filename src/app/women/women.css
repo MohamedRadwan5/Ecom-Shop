@@ -323,7 +323,15 @@
   border-radius: 4px;
   letter-spacing: 0.5px;
   z-index: 10;
+  white-space: nowrap;
+  pointer-events: none;
+  max-width: calc(100% - 20px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  line-height: 1.2;
 }
+
 
 .product-details {
   padding: 1rem;
@@ -453,10 +461,21 @@
   cursor: pointer;
 }
 
+@media (max-width: 1024px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+}
+
 @media (max-width: 860px) {
   .hero-inner-container {
     flex-direction: column;
     text-align: center;
+  }
+
+  .hero-text-col {
+    max-width: 100%;
   }
 
   .slider-dots {
@@ -465,5 +484,56 @@
 
   .content-container {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 }
+
+@media (max-width: 768px) {
+  .women-hero-section {
+    padding: 2.5rem 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title {
+    font-size: 2.1rem;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .sale-pill {
+    top: 8px;
+    left: 8px;
+    font-size: 0.65rem;
+    padding: 0.18rem 0.45rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .filters-sidebar {
+    padding: 1rem;
+  }
+
+  .product-img-wrapper {
+    height: 180px;
+  }
+
+  .sale-pill {
+    top: 6px;
+    left: 6px;
+    font-size: 0.62rem;
+    padding: 0.15rem 0.4rem;
+  }
+}
+
+

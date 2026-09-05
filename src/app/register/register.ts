@@ -11,9 +11,7 @@ import { AuthService } from '../services/auth.service';
 import { CommonModule } from '@angular/common';
 
 /** Custom validator: password must have 1 uppercase + 1 number */
-function strongPasswordValidator(
-  control: AbstractControl
-): ValidationErrors | null {
+function strongPasswordValidator(control: AbstractControl): ValidationErrors | null {
   const value: string = control.value ?? '';
   const hasUpper = /[A-Z]/.test(value);
   const hasNumber = /[0-9]/.test(value);
@@ -24,16 +22,13 @@ function strongPasswordValidator(
 }
 
 /** Custom validator: user must be at least 18 years old */
-function minAge18Validator(
-  control: AbstractControl
-): ValidationErrors | null {
+function minAge18Validator(control: AbstractControl): ValidationErrors | null {
   if (!control.value) return null;
   const dob = new Date(control.value);
   const today = new Date();
   const age = today.getFullYear() - dob.getFullYear();
   const m = today.getMonth() - dob.getMonth();
-  const isOldEnough =
-    age > 18 || (age === 18 && (m > 0 || today.getDate() >= dob.getDate()));
+  const isOldEnough = age > 18 || (age === 18 && (m > 0 || today.getDate() >= dob.getDate()));
   return isOldEnough ? null : { underage: true };
 }
 
@@ -74,17 +69,8 @@ export class RegisterComponent {
       ],
     ],
     email: ['', [Validators.required, Validators.email]],
-    password: [
-      '',
-      [Validators.required, Validators.minLength(8), strongPasswordValidator],
-    ],
-    phoneNumber: [
-      '',
-      [
-        Validators.required,
-        Validators.pattern(/^[0-9]{10,15}$/),
-      ],
-    ],
+    password: ['', [Validators.required, Validators.minLength(8), strongPasswordValidator]],
+    phoneNumber: ['', [Validators.required, Validators.pattern(/^[0-9]{10,15}$/)]],
     dateOfBirth: ['', [Validators.required, minAge18Validator]],
   });
 
@@ -134,3 +120,4 @@ export class RegisterComponent {
     }
   }
 }
+

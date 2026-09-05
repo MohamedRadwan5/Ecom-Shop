@@ -251,7 +251,24 @@
 }
 
 @media (max-width: 900px) {
+  .contact-container {
+    padding: 2rem 1rem;
+  }
+
   .contact-grid {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
 }
+
+@media (max-width: 480px) {
+  .form-card, .location-details-box, .faq-section {
+    padding: 1.25rem 1rem;
+    border-radius: 10px;
+  }
+
+  .form-field input, .form-field textarea {
+    padding: 0.65rem 0.75rem;
+  }
+}
+

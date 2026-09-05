@@ -110,8 +110,13 @@
 }
 
 @media (max-width: 768px) {
+  .about-content-container {
+    padding: 2.5rem 1rem;
+  }
+
   .team-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1.8rem 1rem;
   }
 
   .about-hero-img {
@@ -123,4 +128,14 @@
   .team-grid {
     grid-template-columns: 1fr;
   }
+
+  .about-hero-img {
+    height: 180px;
+  }
+
+  .member-avatar-wrapper {
+    width: 110px;
+    height: 110px;
+  }
 }
+
