@@ -1,10 +1,253 @@
+:root {
+  --bg-page: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-elevated: #f1f5f9;
+  --bg-subtle: #edeae6;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --border-subtle: #cbd5e1;
+  --accent-color: #d97706;
+  --accent-hover: #b45309;
+  --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.dark, body.dark-theme {
+  --bg-page: #0b1120;
+  --bg-card: #1e293b;
+  --bg-elevated: #0f172a;
+  --bg-subtle: #172554;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-color: #334155;
+  --border-subtle: #475569;
+  --accent-color: #f59e0b;
+  --accent-hover: #d97706;
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #f5f7fa;
+html, body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-page);
+  color: var(--text-main);
+  min-height: 100vh;
+  scroll-behavior: smooth;
+}
+
+/* Common Dark Theme Enhancements */
+body.dark-theme .navbar-wrapper,
+body.dark-theme .unified-footer-wrapper,
+body.dark-theme .filters-sidebar,
+body.dark-theme .product-card,
+body.dark-theme .deal-card,
+body.dark-theme .arrival-card,
+body.dark-theme .product-layout,
+body.dark-theme .form-card,
+body.dark-theme .location-details-box,
+body.dark-theme .faq-section,
+body.dark-theme .checkout-section,
+body.dark-theme .summary-card,
+body.dark-theme .empty-cart-box,
+body.dark-theme .order-success-card,
+body.dark-theme .loading-box,
+body.dark-theme .not-found-box {
+  background-color: var(--bg-card) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-main) !important;
+}
+
+body.dark-theme .hero-banner-section,
+body.dark-theme .men-hero-section,
+body.dark-theme .women-hero-section,
+body.dark-theme .about-hero-section {
+  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%) !important;
+  border-color: #334155 !important;
+}
+
+body.dark-theme .hero-title,
+body.dark-theme .section-title,
+body.dark-theme .product-title,
+body.dark-theme .deal-title,
+body.dark-theme .current-price,
+body.dark-theme .deal-price,
+body.dark-theme .trust-heading,
+body.dark-theme .trust-point-title,
+body.dark-theme .brand-title,
+body.dark-theme .member-name,
+body.dark-theme .location-title,
+body.dark-theme .form-title,
+body.dark-theme .faq-title,
+body.dark-theme .page-title,
+body.dark-theme .item-title,
+body.dark-theme .summary-title {
+  color: #ffffff !important;
+}
+
+body.dark-theme .hero-description,
+body.dark-theme .deal-category,
+body.dark-theme .product-category,
+body.dark-theme .product-description,
+body.dark-theme .rating-text,
+body.dark-theme .paragraphs p,
+body.dark-theme .form-desc,
+body.dark-theme .accordion-content p,
+body.dark-theme .info-meta p,
+body.dark-theme .info-meta a,
+body.dark-theme .copyright-text,
+body.dark-theme .legal-links a,
+body.dark-theme .empty-cart-box p,
+body.dark-theme .success-desc,
+body.dark-theme .summary-row {
+  color: var(--text-muted) !important;
+}
+
+body.dark-theme .search-box,
+body.dark-theme .deal-img-wrap,
+body.dark-theme .product-img-wrapper,
+body.dark-theme .arrival-img-wrap,
+body.dark-theme .main-image-wrapper,
+body.dark-theme .item-thumbnail,
+body.dark-theme .accordion-toggle,
+body.dark-theme .order-meta-box,
+body.dark-theme .trust-icon-box {
+  background-color: var(--bg-elevated) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-main) !important;
+}
+
+body.dark-theme .accordion-toggle.open {
+  background-color: var(--bg-card) !important;
+  color: var(--accent-color) !important;
+}
+
+body.dark-theme input,
+body.dark-theme textarea,
+body.dark-theme select {
+  background-color: #0f172a !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+
+body.dark-theme input::placeholder,
+body.dark-theme textarea::placeholder {
+  color: #64748b !important;
+}
+
+body.dark-theme .size-btn,
+body.dark-theme .size-chip,
+body.dark-theme .qty-btn,
+body.dark-theme .nav-arrow-btn,
+body.dark-theme .action-btn {
+  background-color: #0f172a !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+
+body.dark-theme .size-btn:hover,
+body.dark-theme .size-btn.active,
+body.dark-theme .size-chip.active {
+  background-color: var(--accent-color) !important;
+  border-color: var(--accent-color) !important;
+  color: #0f172a !important;
+}
+
+body.dark-theme .hero-action-btn {
+  border-color: #f8fafc !important;
+  color: #f8fafc !important;
+}
+
+body.dark-theme .hero-action-btn:hover {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+body.dark-theme .nav-item a {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .nav-item a:hover,
+body.dark-theme .nav-item a.active {
+  color: #ffffff !important;
+}
+
+body.dark-theme .header-line,
+body.dark-theme .summary-divider,
+body.dark-theme .footer-bottom-bar {
+  background-color: #334155 !important;
+  border-color: #334155 !important;
+}
+
+/* Dark Mode Overrides for Auth Pages */
+body.dark-theme .login-page,
+body.dark-theme .forgot-password-page {
+  background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%) !important;
+}
+
+body.dark-theme .login-card,
+body.dark-theme .forgot-password-card {
+  background: #1e293b !important;
+  border: 1px solid #334155 !important;
+  color: #f8fafc !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+body.dark-theme .login-title,
+body.dark-theme .forgot-password-title {
+  color: #f8fafc !important;
+}
+
+body.dark-theme .left-panel {
+  background: #1e293b !important;
+}
+
+body.dark-theme .left-panel .hero-text h1,
+body.dark-theme .left-panel .hero-text ul li,
+body.dark-theme .left-panel .dot {
+  color: #f8fafc !important;
+}
+
+body.dark-theme .right-panel {
+  background: #0f172a !important;
+  color: #f8fafc !important;
+}
+
+body.dark-theme .right-panel h2 {
+  color: #f8fafc !important;
+}
+
+body.dark-theme .right-panel label,
+body.dark-theme .dob-label-text,
+body.dark-theme .checkbox-label {
+  color: #cbd5e1 !important;
+}
+
+/* SMOOTH ROUTE / TAB TRANSITION ANIMATION */
+@keyframes routeFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home-main,
+.category-page,
+.about-page,
+.contact-page,
+.details-page,
+.checkout-page,
+.register-page,
+.login-page,
+.forgot-password-page {
+  animation: routeFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

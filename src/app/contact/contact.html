@@ -1,92 +1,156 @@
-<div class="container page">
-  <h1 class="page-title">Contact Us</h1>
+<app-navbar></app-navbar>
 
-  <div class="grid">
-    <div class="left-col">
-      <div class="map-box">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7479.703845160594!2d31.241834057328923!3d30.04855281291422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145840c7487e04cd%3A0x3377b407fe2c3754!2z2YjYs9i3INin2YTYqNmE2K_YjCDYqNin2Kgg2KfZhNmE2YjZgtiMINi52KfYqNiv2YrZhtiMINmF2K3Yp9mB2LjYqSDYp9mE2YLYp9mH2LHYqeKArA!5e1!3m2!1sar!2seg!4v1788603342165!5m2!1sar!2seg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+<main class="contact-page">
+  <div class="contact-container">
+    <div class="contact-grid">
+      <!-- LEFT COLUMN: MAP & LOCATION INFO -->
+      <div class="left-column">
+        <div class="map-card">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110532.73030386708!2d30.91605929726562!3d29.979058100000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145855e34749f96b%3A0x867ea3ec7e6f89ef!2s6th%20of%20October%20City%2C%20Giza%20Governorate!5e0!3m2!1sen!2seg!4v1715000000000!5m2!1sen!2seg" 
+            width="100%" 
+            height="320" 
+            style="border:0; border-radius: 12px;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Office Location Map"
+          >
+          </iframe>
+        </div>
+
+        <div class="location-details-box">
+          <h2 class="location-title">Giza / 6th of October, Egypt</h2>
+          <p class="location-subtitle">Central Operations &amp; Customer Support Headquarters</p>
+
+          <div class="info-list">
+            <div class="info-row">
+              <span class="info-icon">📍</span>
+              <div class="info-meta">
+                <strong>Office Address</strong>
+                <p>Central Plaza Complex, 6th of October City, Giza, Egypt</p>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <span class="info-icon">📞</span>
+              <div class="info-meta">
+                <strong>Contact Phone Line</strong>
+                <a href="tel:+201234567891">+20 123 456 7891</a>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <span class="info-icon">✉️</span>
+              <div class="info-meta">
+                <strong>Email Address</strong>
+                <a href="mailto:support@ecomshop.com">support&#64;ecomshop.com</a>
+              </div>
+            </div>
+
+            <div class="info-row">
+              <span class="info-icon">🌐</span>
+              <div class="info-meta">
+                <strong>Official Website</strong>
+                <a href="https://www.ecomshop.com" target="_blank" rel="noopener">www.ecomshop.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <h5 class="location-title">Downtown, Cairo, Egypt</h5>
-     <div class="info">
-    <div class="info-item">
-    <span class="icon">📍</span>
-    <div class="text"><span class="label">Our Location</span> 
-    <a href="https://www.google.com/maps/search/?api=1&query=Downtown+Cairo+Giza+Egypt" >Downtown Cairo, Giza, Egypt</a></div>
-    </div>
-    <div class="info-item">
-    <span class="icon">📞</span>
-    <div class="text"><span class="label">Contact Phone Line</span> 
-    <a href="tel:+201237567891"> +20 1234567891 </a></div>
-    </div>
-    <div class="info-item">
-    <span class="icon">✉️</span>
-        <div class="text"><span class="label">Send an email</span>
-          <a href="mailto:abc@gmail.com"> abc@gmail.com </a></div>
-    </div>
-    <div class="info-item">
-    <span class="icon">🌐</span>
-    <div class="text"><span class="label">Our website</span> 
-    <a href="https://www.ecomshop.com" target="_blank" rel="noopener"> www.ecomshop.com </a></div>
-    </div>
-     </div>
-    </div>
-    <div class="right-col">
-      <div class="contact-card">
-        <h3>Contact</h3>
+      <!-- RIGHT COLUMN: CONTACT FORM & FAQ -->
+      <div class="right-column">
+        <!-- CONTACT CARD -->
+        <div class="form-card">
+          <h3 class="form-title">CONTACT</h3>
+          <p class="form-desc">Have any questions or need custom assistance? Drop us a note!</p>
 
-        <form [action]="formAction" method="POST">
-          <input type="hidden" name="_subject" value="New message from Contact Us page">
-          <input type="hidden" name="_template" value="table">
+          <div *ngIf="isSubmitted()" class="alert-success">
+            ✓ Thank you! Your message has been sent successfully. We will reach out shortly.
+          </div>
 
-          <div class="field">
-            <label class="form-label">Name</label>
-            <input type="text" name="name" class="form-control" required>
-          </div>
-          <div class="field">
-            <label class="form-label">Email</label>
-            <input type="email" name="email" class="form-control" required>
-          </div>
-          <div class="field">
-            <label class="form-label">Phone Number</label>
-            <input type="tel" name="phone" class="form-control">
-          </div>
-          <div class="field">
-            <label class="form-label">Message</label>
-            <textarea name="message" rows="5" class="form-control" required></textarea>
-          </div>
-          <button type="submit" class="btn-submit">Submit</button>
-        </form>
-      </div>
+          <form (submit)="$event.preventDefault(); false" (ngSubmit)="onSubmit($event)" #contactForm="ngForm" class="contact-form">
+            <div class="form-field">
+              <label for="name">Name</label>
+              <input 
+                id="name" 
+                type="text" 
+                name="name" 
+                [(ngModel)]="formData.name" 
+                placeholder="Your full name" 
+                required 
+              />
+            </div>
 
-      <h2 class="section-title">FAQ Quick Links</h2>
-      <div class="accordion">
-        <div class="accordion-item" *ngFor="let faq of faqs">
-          <button class="accordion-button" [class.open]="faq.open" (click)="toggleFaq(faq)">
-            {{ faq.question }}
-          </button>
-          <div class="accordion-body" *ngIf="faq.open">{{ faq.answer }}</div>
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input 
+                id="email" 
+                type="email" 
+                name="email" 
+                [(ngModel)]="formData.email" 
+                placeholder="name@example.com" 
+                required 
+              />
+            </div>
+
+            <div class="form-field">
+              <label for="phone">Phone Number</label>
+              <input 
+                id="phone" 
+                type="tel" 
+                name="phone" 
+                [(ngModel)]="formData.phone" 
+                placeholder="+20 1..." 
+              />
+            </div>
+
+            <div class="form-field">
+              <label for="message">Message</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                [(ngModel)]="formData.message" 
+                rows="4" 
+                placeholder="How can we help you?" 
+                required
+              ></textarea>
+            </div>
+
+            <button 
+              type="button" 
+              class="submit-btn" 
+              [disabled]="!contactForm.form.valid"
+              (click)="onSubmit($event)"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+
+        <!-- FAQ ACCORDION -->
+        <div class="faq-section">
+          <h3 class="faq-title">FAQ Quick Links</h3>
+          <div class="accordion-group">
+            <div class="accordion-item" *ngFor="let faq of faqs">
+              <button 
+                class="accordion-toggle" 
+                [class.open]="faq.open"
+                (click)="toggleFaq(faq)"
+              >
+                <span>{{ faq.question }}</span>
+                <span class="arrow-icon">{{ faq.open ? '▾' : '▸' }}</span>
+              </button>
+              <div class="accordion-content" *ngIf="faq.open">
+                <p>{{ faq.answer }}</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</main>
 
-<div class="feature-strip">
-  <div class="container feature-grid">
-    <div class="feature-item" *ngFor="let f of features">
-      <div class="feature-icon">{{ f.icon }}</div>
-      <div class="feature-label">{{ f.label }}</div>
-    </div>
-  </div>
-</div>
-  
-<footer>
-  <div class="container footer">
-    <span>© 2026 E-Com Shop. All rights reserved.</span>
-    <span>
-       <a href="#">Terms</a> &nbsp;|&nbsp;
-       <a href="#">Privacy Policy</a>
-     </span>
-  </div>
-</footer>
+<app-footer></app-footer>

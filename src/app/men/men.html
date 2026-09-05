@@ -1,0 +1,178 @@
+<app-navbar></app-navbar>
+
+<main class="category-page">
+  <!-- TOAST ALERT -->
+  <div *ngIf="addedToast()" class="floating-toast">
+    ✓ {{ addedToast() }}
+  </div>
+
+  <!-- HERO BANNER (MEN'S COLLECTION - MATCHING DESIGN) -->
+  <section class="men-hero-section">
+    <div class="hero-inner-container">
+      <div class="hero-text-col">
+        <h1 class="hero-title">MEN'S COLLECTION</h1>
+        <p class="hero-description">
+          Explore our premier menswear collection featuring tailored blazers, luxury chronograph watches, fine leather shoes, and handcrafted backpacks.
+        </p>
+        <button class="hero-action-btn" (click)="scrollToProducts()">EXPLORE NOW</button>
+        
+        <div class="slider-dots">
+          <span class="dot active"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+
+      <div class="hero-visual-col">
+        <div class="hero-img-composition">
+          <img 
+            src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=800&q=80" 
+            alt="Men's Collection Suit, Watch, Shoes and Bag" 
+            loading="lazy"
+            class="hero-primary-photo"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT CONTAINER -->
+  <div class="content-container" id="men-products-section">
+    <!-- FILTERS SIDEBAR -->
+    <aside class="filters-sidebar">
+      <div class="filters-header">
+        <h3>FILTERS</h3>
+        <button class="reset-btn" (click)="selectedCategory.set('all'); selectedPriceRange.set('all'); selectedSize.set('all'); selectedColor.set('all')">
+          Reset
+        </button>
+      </div>
+
+      <!-- Categories -->
+      <div class="filter-box">
+        <h4 class="filter-label">CATEGORIES</h4>
+        <div class="filter-options">
+          <label *ngFor="let cat of categories" class="filter-checkbox-label">
+            <input 
+              type="radio" 
+              name="menCat" 
+              [checked]="selectedCategory() === cat.toLowerCase()"
+              (change)="setCategory(cat)"
+            />
+            <span>{{ cat }}</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Price Ranges -->
+      <div class="filter-box">
+        <h4 class="filter-label">PRICING</h4>
+        <div class="filter-options">
+          <label class="filter-checkbox-label">
+            <input type="radio" name="menPrice" [checked]="selectedPriceRange() === 'all'" (change)="setPriceRange('all')" />
+            <span>All Prices</span>
+          </label>
+          <label class="filter-checkbox-label">
+            <input type="radio" name="menPrice" [checked]="selectedPriceRange() === 'under-50'" (change)="setPriceRange('under-50')" />
+            <span>Under $50</span>
+          </label>
+          <label class="filter-checkbox-label">
+            <input type="radio" name="menPrice" [checked]="selectedPriceRange() === '50-100'" (change)="setPriceRange('50-100')" />
+            <span>$50 - $100</span>
+          </label>
+          <label class="filter-checkbox-label">
+            <input type="radio" name="menPrice" [checked]="selectedPriceRange() === 'over-100'" (change)="setPriceRange('over-100')" />
+            <span>$100+</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Sizes -->
+      <div class="filter-box">
+        <h4 class="filter-label">SIZE</h4>
+        <div class="size-chips">
+          <button 
+            *ngFor="let s of sizes" 
+            class="size-chip" 
+            [class.active]="selectedSize() === s"
+            (click)="setSize(s)"
+          >
+            {{ s }}
+          </button>
+        </div>
+      </div>
+
+      <!-- Colors -->
+      <div class="filter-box">
+        <h4 class="filter-label">COLOR</h4>
+        <div class="color-swatches">
+          <button 
+            *ngFor="let c of colors" 
+            class="color-dot" 
+            [style.background-color]="c.hex"
+            [class.active]="selectedColor() === c.name.toLowerCase()"
+            [title]="c.name"
+            (click)="setColor(c.name)"
+          >
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- PRODUCTS MAIN SECTION -->
+    <section class="products-container">
+      <div class="products-top-bar">
+        <span class="results-count">Showing <strong>{{ filteredProducts().length }}</strong> items</span>
+      </div>
+
+      <!-- Loading State -->
+      <div *ngIf="isLoading()" class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading Men's collection...</p>
+      </div>
+
+      <!-- Product Grid -->
+      <div *ngIf="!isLoading()" class="products-grid">
+        <article 
+          class="product-card" 
+          *ngFor="let product of filteredProducts()"
+          [routerLink]="['/product', product.id]"
+        >
+          <div class="product-img-wrapper">
+            <span *ngIf="product.isSale" class="sale-pill">{{ product.saleTag || 'SALE' }}</span>
+            <img [src]="product.image" [alt]="product.title" loading="lazy" class="product-img" (error)="onImageError(product.id)" />
+          </div>
+
+          <div class="product-details">
+            <span class="product-category">{{ product.subCategory || 'MEN' }}</span>
+            <h3 class="product-title" [title]="product.title">{{ product.title }}</h3>
+            
+            <div class="product-rating" *ngIf="product.rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-num">({{ product.rating.count }})</span>
+            </div>
+
+            <div class="product-footer-row">
+              <div class="price-wrap">
+                <span class="current-price">${{ product.price }}</span>
+                <span *ngIf="product.originalPrice" class="original-price">${{ product.originalPrice }}</span>
+              </div>
+              <button class="add-btn" (click)="addToCart(product, $event)" title="Add to cart" aria-label="Add to cart">
+                +
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Empty State -->
+      <div *ngIf="!isLoading() && filteredProducts().length === 0" class="empty-state">
+        <p>No products match your current filters.</p>
+        <button class="reset-btn-large" (click)="selectedCategory.set('all'); selectedPriceRange.set('all'); selectedSize.set('all')">
+          Clear Filters
+        </button>
+      </div>
+    </section>
+  </div>
+</main>
+
+<app-footer></app-footer>

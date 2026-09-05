@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 
-// ================================================
-// ✏️  ضع بياناتك الحقيقية هنا
-// ================================================
+
 const GOOGLE_CLIENT_ID = 'YOUR_GOOGLE_CLIENT_ID';
 const FACEBOOK_APP_ID  = 'YOUR_FACEBOOK_APP_ID';
 

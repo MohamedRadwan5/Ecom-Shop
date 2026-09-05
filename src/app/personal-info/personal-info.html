@@ -1,0 +1,146 @@
+<app-navbar></app-navbar>
+
+<main class="personal-info-page">
+  <div class="info-container">
+    <!-- HERO HEADER CARD -->
+    <div class="profile-header-card">
+      <div class="user-avatar-circle">
+        <span>👤</span>
+      </div>
+      <div class="user-header-details">
+        <h1 class="profile-name">
+          {{ currentUser()?.firstName }} {{ currentUser()?.lastName }}
+        </h1>
+        <p class="profile-email">✉️ {{ currentUser()?.email }}</p>
+        <span class="user-badge">Verified Customer</span>
+      </div>
+      <button class="btn-logout" (click)="onLogout()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+          <polyline points="16 17 21 12 16 7"></polyline>
+          <line x1="21" y1="12" x2="9" y2="12"></line>
+        </svg>
+        Log Out
+      </button>
+    </div>
+
+    <!-- PERSONAL INFORMATION DETAILS FORM -->
+    <div class="info-card">
+      <div class="card-top-bar">
+        <div class="card-title-wrap">
+          <h2 class="card-title">Personal Information</h2>
+          <p class="card-subtitle">Manage your account details and contact preferences.</p>
+        </div>
+        <button type="button" class="btn-edit-toggle" (click)="toggleEdit()">
+          @if (isEditing()) { Cancel Edit } @else { ✏️ Edit Info }
+        </button>
+      </div>
+
+      <!-- Alerts -->
+      @if (successMessage()) {
+        <div class="alert alert-success fade-out-alert">
+          ✅ {{ successMessage() }}
+        </div>
+      }
+      @if (errorMessage()) {
+        <div class="alert alert-error">
+          ❌ {{ errorMessage() }}
+        </div>
+      }
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+        <div class="form-grid">
+          <!-- First Name -->
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input
+              id="firstName"
+              type="text"
+              formControlName="firstName"
+              [readonly]="!isEditing()"
+              [class.read-only]="!isEditing()"
+              [class.input-error]="isInvalid('firstName')"
+            />
+            @if (isInvalid('firstName')) {
+              <span class="error-msg">Valid first name is required (min 2 characters).</span>
+            }
+          </div>
+
+          <!-- Last Name -->
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input
+              id="lastName"
+              type="text"
+              formControlName="lastName"
+              [readonly]="!isEditing()"
+              [class.read-only]="!isEditing()"
+              [class.input-error]="isInvalid('lastName')"
+            />
+            @if (isInvalid('lastName')) {
+              <span class="error-msg">Valid last name is required (min 2 characters).</span>
+            }
+          </div>
+
+          <!-- Email -->
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              [readonly]="!isEditing()"
+              [class.read-only]="!isEditing()"
+              [class.input-error]="isInvalid('email')"
+            />
+            @if (isInvalid('email')) {
+              <span class="error-msg">A valid email address is required.</span>
+            }
+          </div>
+
+          <!-- Phone Number -->
+          <div class="form-group">
+            <label for="phoneNumber">Phone Number</label>
+            <input
+              id="phoneNumber"
+              type="tel"
+              formControlName="phoneNumber"
+              [readonly]="!isEditing()"
+              [class.read-only]="!isEditing()"
+              [class.input-error]="isInvalid('phoneNumber')"
+            />
+            @if (isInvalid('phoneNumber')) {
+              <span class="error-msg">Valid phone number (10-15 digits) is required.</span>
+            }
+          </div>
+
+          <!-- Date of Birth -->
+          <div class="form-group full-width">
+            <label for="dateOfBirth">Date of Birth</label>
+            <input
+              id="dateOfBirth"
+              type="date"
+              formControlName="dateOfBirth"
+              [readonly]="!isEditing()"
+              [class.read-only]="!isEditing()"
+              [class.input-error]="isInvalid('dateOfBirth')"
+            />
+            @if (isInvalid('dateOfBirth')) {
+              <span class="error-msg">Date of birth is required.</span>
+            }
+          </div>
+        </div>
+
+        @if (isEditing()) {
+          <div class="form-actions">
+            <button type="submit" class="btn-save" [disabled]="isLoading()">
+              @if (isLoading()) { Saving... } @else { Save Changes }
+            </button>
+          </div>
+        }
+      </form>
+    </div>
+  </div>
+</main>
+
+<app-footer></app-footer>

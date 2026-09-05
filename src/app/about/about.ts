@@ -1,73 +1,71 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from '../shared/navbar/navbar';
+import { FooterComponent } from '../shared/footer/footer';
 
 interface TeamMember {
   name: string;
   role: string;
   photo: string;
+  borderColor: string;
 }
-@Component({
-  imports: [CommonModule],
-  selector: 'app-about',
-  styleUrl: './about.css',
-  templateUrl: './about.html',
-})
-export class About {
 
-  heroImage: string ='https://wallpaperaccess.com/full/6437054.jpg';
+@Component({
+  selector: 'app-about',
+  standalone: true,
+  imports: [CommonModule, NavbarComponent, FooterComponent],
+  templateUrl: './about.html',
+  styleUrl: './about.css'
+})
+export class AboutComponent {
+  heroImage = 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=80';
 
   storyParagraphs: string[] = [
-    `Our journey began with a simple idea: give every customer an easy, reliable shopping experience.
-     Since day one, we've focused on sourcing quality products and building a passionate team that puts
-     customer satisfaction first, constantly refining our services to keep up with a changing market.`,
-    `Over the years we've grown to serve thousands of customers, while staying true to the values we
-     started with: transparency, quality, and reliability. We believe real success is measured by the
-     satisfaction of the people we serve.`
+    `Our journey began with a simple idea: give every customer an easy, reliable shopping experience with authentic top-grade merchandise. Since day one, we've focused on sourcing quality products and building a passionate team that puts customer satisfaction first, constantly refining our services to keep up with an evolving digital market.`,
+    `Over the years we've grown to serve hundreds of thousands of satisfied customers across the region, while staying true to the fundamental values we started with: transparency, craftsmanship, high security, and unwavering reliability. We believe real success is measured by the satisfaction of the people we serve.`
   ];
 
   missionVisionParagraphs: string[] = [
-    `Our mission is to simplify online shopping by offering carefully curated products and outstanding
-     customer service, backed by the highest standards of quality and transparency in every interaction.`,
-    `Our vision is to become the leading destination for online shopping in the region, driven by
-     continuous innovation and long-term relationships built on trust with our customers and partners.`
+    `Our mission is to simplify online commerce by offering carefully curated global products, transparent pricing, and outstanding round-the-clock customer service, backed by the highest standards of quality in every interaction.`,
+    `Our vision is to become the leading and most trusted online destination in the Middle East and worldwide, driven by continuous innovation, cutting-edge logistics, and enduring partnerships built on customer trust.`
   ];
 
   team: TeamMember[] = [
     {
-      name: 'John Doe',
-      role: 'Executive Manager',
-      photo: 'https://tse1.mm.bing.net/th/id/OIP.2O1VUc1nYvHTWTkMie5PkAAAAA?r=0&pid=ImgDet&w=184&h=276&c=7&dpr=1.3&o=7&rm=3'
+      name: 'Danial Ramirez',
+      role: 'Executive Director',
+      photo: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
+      borderColor: '#3b82f6'
     },
     {
-      name: 'Jane Smith',
-      role: 'Development Manager',
-      photo: 'https://as2.ftcdn.net/jpg/10/76/17/35/1000_F_1076173580_t0OeEmmT8f0iLVFx0xMqPozTm8IDmp9W.jpg'
+      name: 'Sarah Mitchell',
+      role: 'Head of Operations',
+      photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80',
+      borderColor: '#06b6d4'
     },
     {
-      name: 'Michael Johnson',
-      role: 'Sales Manager',
-      photo: 'https://files.idyllic.app/files/static/3972779'
+      name: 'Elena Rostova',
+      role: 'Chief Design Officer',
+      photo: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&q=80',
+      borderColor: '#ec4899'
     },
     {
-      name: 'David Denial',
-      role: 'Sales Manager',
-      photo: 'https://i.pinimg.com/736x/c4/b0/37/c4b03714f8813cce24c1f6e7b76fde9f.jpg'
+      name: 'Marcus Vance',
+      role: 'Lead Tech Architect',
+      photo: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
+      borderColor: '#ef4444'
     },
     {
-      name: 'Andro Smith',
-      role: 'Sales Manager',
-      photo: 'https://themaleedit.com/wp-content/uploads/2025/06/1B7Zk0KDmUxxHycNSrSsP.webp'
+      name: 'Amir Salama',
+      role: 'Product Strategy Lead',
+      photo: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
+      borderColor: '#3b82f6'
     },
     {
-      name: 'Sarah Lee',
-      role: 'Operation Manager',
-      photo: 'https://png.pngtree.com/png-vector/20231117/ourlarge/pngtree-cute-girl-bigness-white-background-png-image_10629306.png'
+      name: 'Fatima El-Sayed',
+      role: 'Customer Experience Head',
+      photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
+      borderColor: '#10b981'
     }
-  ];
-
-  features: { icon: string; label: string }[] = [
-    { icon: '🚚', label: 'Fast & Free Delivery' },
-    { icon: '🔒', label: 'Secure Payments' },
-    { icon: '🎧', label: '24/7 Support' }
   ];
 }

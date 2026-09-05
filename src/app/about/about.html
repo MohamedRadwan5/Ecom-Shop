@@ -1,45 +1,45 @@
+<app-navbar></app-navbar>
 
-<img class="hero-img" [src]="heroImage" alt="Team">
-
-<div class="container content">
-
-  <section class="text-block">
-    <h2 class="section-title">Our Story</h2>
-    <p class="lead-text" *ngFor="let p of storyParagraphs">{{ p }}</p>
+<main class="about-page">
+  <!-- HERO BANNER -->
+  <section class="about-hero-section">
+    <div class="about-hero-container">
+      <img [src]="heroImage" alt="E-Com Shop Team" loading="lazy" class="about-hero-img" />
+    </div>
   </section>
 
-  <section class="text-block">
-    <h2 class="section-title">Mission & Vision</h2>
-    <p class="lead-text" *ngFor="let p of missionVisionParagraphs">{{ p }}</p>
-  </section>
-
-  <section>
-    <h2 class="section-title">Our Team Leadership</h2>
-    <div class="team-grid">
-      <div class="team-card" *ngFor="let member of team">
-        <img class="team-photo" [src]="member.photo" [alt]="member.name">
-        <div class="team-name">{{ member.name }}</div>
-        <div class="team-role">{{ member.role }}</div>
+  <!-- CONTENT BLOCKS -->
+  <div class="about-content-container">
+    <!-- OUR STORY -->
+    <section class="text-section">
+      <h2 class="section-title">OUR STORY</h2>
+      <div class="paragraphs">
+        <p *ngFor="let p of storyParagraphs">{{ p }}</p>
       </div>
-    </div>
-  </section>
-</div>
+    </section>
 
-<div class="feature-strip">
-  <div class="container feature-grid">
-    <div class="feature-item" *ngFor="let f of features">
-      <div class="feature-icon">{{ f.icon }}</div>
-      <div class="feature-label">{{ f.label }}</div>
-    </div>
+    <!-- MISSION & VISION -->
+    <section class="text-section">
+      <h2 class="section-title">MISSION &amp; VISION</h2>
+      <div class="paragraphs">
+        <p *ngFor="let p of missionVisionParagraphs">{{ p }}</p>
+      </div>
+    </section>
+
+    <!-- OUR TEAM LEADERSHIP -->
+    <section class="team-section">
+      <h2 class="section-title">OUR TEAM LEADERSHIP</h2>
+      <div class="team-grid">
+        <div class="team-member-card" *ngFor="let member of team">
+          <div class="member-avatar-wrapper" [style.border-color]="member.borderColor">
+            <img [src]="member.photo" [alt]="member.name" loading="lazy" class="member-avatar" />
+          </div>
+          <h4 class="member-name">{{ member.name }}</h4>
+          <span class="member-role">{{ member.role }}</span>
+        </div>
+      </div>
+    </section>
   </div>
-</div>
-  
-<footer>
-  <div class="container footer">
-    <span>© 2026 E-Com Shop. All rights reserved.</span>
-    <span>
-       <a href="#">Terms</a> &nbsp;|&nbsp;
-       <a href="#">Privacy Policy</a>
-     </span>
-  </div>
-</footer>
+</main>
+
+<app-footer></app-footer>

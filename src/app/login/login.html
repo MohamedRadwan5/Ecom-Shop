@@ -18,7 +18,7 @@
 
     <!-- Alerts -->
     @if (successMessage()) {
-      <div class="alert alert-success">
+      <div class="alert alert-success fade-out-alert">
         ✅ {{ successMessage() }}
       </div>
     }
@@ -95,7 +95,7 @@
           <input type="checkbox" formControlName="rememberMe" />
           <span>Remember Me</span>
         </label>
-        <a href="javascript:void(0)" class="forgot-link">Forget Password?</a>
+        <a routerLink="/forgot-password" class="forgot-link">Forget Password?</a>
       </div>
 
       <!-- Submit Button -->

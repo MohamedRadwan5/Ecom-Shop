@@ -1,0 +1,89 @@
+<header class="navbar-wrapper">
+  <div class="top-nav-container">
+    <!-- Brand Logo matching Register and Login page -->
+    <a routerLink="/home" class="brand-link" (click)="closeMobileMenu()">
+      <div class="nav-logo">
+        <span>🛒</span>
+      </div>
+      <span class="brand-title">E-Com Shop</span>
+    </a>
+
+    <!-- Mobile Hamburger Toggle -->
+    <button class="mobile-toggle" (click)="toggleMobileMenu()" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Main Navigation Links -->
+    <nav class="nav-menu" [class.open]="mobileMenuOpen()">
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeMobileMenu()">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/men" routerLinkActive="active" (click)="closeMobileMenu()">MEN</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/women" routerLinkActive="active" (click)="closeMobileMenu()">WOMEN</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/electronics" routerLinkActive="active" (click)="closeMobileMenu()">ELECTRONICS</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/about" routerLinkActive="active" (click)="closeMobileMenu()">ABOUT</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/contact" routerLinkActive="active" (click)="closeMobileMenu()">CONTACT US</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Search, Dark Mode & User Actions -->
+    <div class="nav-actions">
+      <div class="search-box">
+        <input 
+          type="text" 
+          placeholder="Search products..." 
+          [(ngModel)]="searchQuery"
+          class="search-input"
+        />
+        <button class="search-btn" aria-label="Search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Theme Toggle Button (Light/Dark Mode) -->
+      <button 
+        class="action-btn theme-toggle-btn" 
+        (click)="toggleTheme()" 
+        [title]="themeService.isDarkMode() ? 'Switch to Light Mode' : 'Switch to Dark Mode'"
+        aria-label="Toggle theme"
+      >
+        <span *ngIf="themeService.isDarkMode()">☀️</span>
+        <span *ngIf="!themeService.isDarkMode()">🌙</span>
+      </button>
+
+      <!-- Cart Button linking to /checkout with live total count -->
+      <a routerLink="/checkout" class="action-btn cart-btn" aria-label="Shopping Cart">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        <span class="cart-badge">{{ cartService.totalCount() }}</span>
+      </a>
+
+      <!-- Personal Information / User Profile Link -->
+      <a routerLink="/personal-info" class="action-btn login-link" title="Personal Information" (click)="closeMobileMenu()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+          <circle cx="12" cy="7" r="4"></circle>
+        </svg>
+      </a>
+    </div>
+  </div>
+</header>

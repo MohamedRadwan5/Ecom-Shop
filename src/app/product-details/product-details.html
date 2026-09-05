@@ -1,0 +1,148 @@
+<app-navbar></app-navbar>
+
+<main class="details-page">
+  <div class="details-container">
+    <!-- BREADCRUMBS -->
+    <nav class="breadcrumb-nav">
+      <a routerLink="/home">Home</a>
+      <span class="sep">/</span>
+      <span class="active-crumb">{{ product()?.title || 'Product Details' }}</span>
+    </nav>
+
+    <!-- LOADING STATE -->
+    <div *ngIf="isLoading()" class="loading-box">
+      <div class="spinner"></div>
+      <p>Loading product details...</p>
+    </div>
+
+    <!-- MAIN PRODUCT CARD -->
+    <div *ngIf="!isLoading() && product() as prod" class="product-layout">
+      <!-- LEFT: IMAGE GALLERY -->
+      <div class="image-section">
+        <div class="main-image-wrapper">
+          <span *ngIf="prod.isSale" class="sale-badge">{{ prod.saleTag || 'SALE' }}</span>
+          <img [src]="prod.image" [alt]="prod.title" loading="lazy" class="main-image" />
+        </div>
+      </div>
+
+      <!-- RIGHT: DETAILS & ACTIONS -->
+      <div class="info-section">
+        <div class="tag-row">
+          <span class="category-tag">{{ prod.subCategory || prod.category }}</span>
+          <span *ngIf="prod.brand" class="brand-tag">{{ prod.brand }}</span>
+        </div>
+
+        <h1 class="product-title">{{ prod.title }}</h1>
+
+        <!-- RATINGS -->
+        <div class="rating-row" *ngIf="prod.rating">
+          <span class="stars">★★★★★</span>
+          <span class="rating-text">{{ prod.rating.rate }} / 5.0 ({{ prod.rating.count }} verified reviews)</span>
+        </div>
+
+        <!-- PRICING -->
+        <div class="price-row">
+          <span class="current-price">${{ prod.price }}</span>
+          <span *ngIf="prod.originalPrice" class="original-price">${{ prod.originalPrice }}</span>
+          <span *ngIf="prod.originalPrice" class="save-badge">
+            Save ${{ (prod.originalPrice - prod.price).toFixed(2) }}
+          </span>
+        </div>
+
+        <!-- DESCRIPTION -->
+        <p class="product-description">{{ prod.description }}</p>
+
+        <div class="stock-status">
+          <span class="stock-dot"></span>
+          <span>In Stock • Ready to dispatch across Egypt</span>
+        </div>
+
+        <!-- SIZE SELECTOR -->
+        <div class="option-group" *ngIf="prod.sizes && prod.sizes.length > 0">
+          <label class="option-label">Select Size: <strong>{{ selectedSize() }}</strong></label>
+          <div class="size-options">
+            <button 
+              *ngFor="let s of prod.sizes" 
+              class="size-btn"
+              [class.active]="selectedSize() === s"
+              (click)="setSize(s)"
+            >
+              {{ s }}
+            </button>
+          </div>
+        </div>
+
+        <!-- COLOR SELECTOR -->
+        <div class="option-group" *ngIf="prod.colors && prod.colors.length > 0">
+          <label class="option-label">Select Color</label>
+          <div class="color-options">
+            <button 
+              *ngFor="let c of prod.colors" 
+              class="color-btn"
+              [style.background-color]="c"
+              [class.active]="selectedColor() === c"
+              (click)="setColor(c)"
+            >
+            </button>
+          </div>
+        </div>
+
+        <!-- QUANTITY & CTA BUTTONS -->
+        <div class="actions-group">
+          <div class="qty-control">
+            <button class="qty-btn" (click)="decreaseQty()" aria-label="Decrease quantity">-</button>
+            <span class="qty-value">{{ quantity() }}</span>
+            <button class="qty-btn" (click)="increaseQty()" aria-label="Increase quantity">+</button>
+          </div>
+
+          <button class="add-to-cart-btn" (click)="addToCart()">
+            🛒 Add to Cart
+          </button>
+
+          <button class="buy-now-btn" (click)="buyNow()">
+            ⚡ Buy Now
+          </button>
+        </div>
+
+        <!-- ADDED FEEDBACK ALERT -->
+        <div *ngIf="addedToCartMessage()" class="cart-feedback-alert">
+          ✓ Added to your cart! Your items are saved in local storage.
+        </div>
+
+        <!-- HIGHLIGHTS LIST -->
+        <div class="product-highlights">
+          <div class="highlight-item">
+            <span class="highlight-icon">🚚</span>
+            <div>
+              <strong>Fast Delivery</strong>
+              <p>Free standard delivery on orders over $50</p>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-icon">🔄</span>
+            <div>
+              <strong>14-Day Return Guarantee</strong>
+              <p>Hassle-free returns and exchanges</p>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <span class="highlight-icon">🔒</span>
+            <div>
+              <strong>100% Authentic &amp; Secure</strong>
+              <p>Genuine warranty and encrypted checkout</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NOT FOUND -->
+    <div *ngIf="!isLoading() && !product()" class="not-found-box">
+      <h2>Product Not Found</h2>
+      <p>The product you are looking for might have been moved or is unavailable.</p>
+      <a routerLink="/home" class="return-home-btn">Return to Store</a>
+    </div>
+  </div>
+</main>
+
+<app-footer></app-footer>

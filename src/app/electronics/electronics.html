@@ -1,0 +1,153 @@
+<app-navbar></app-navbar>
+
+<main class="category-page">
+  <!-- TOAST ALERT -->
+  <div *ngIf="addedToast()" class="floating-toast">
+    ✓ {{ addedToast() }}
+  </div>
+
+  <!-- HERO BANNER (ELECTRONICS STORE - MATCHING DESIGN) -->
+  <section class="electronics-hero-section">
+    <div class="hero-inner-container">
+      <div class="hero-text-col">
+        <h1 class="hero-title">ELECTRONICS STORE</h1>
+        <p class="hero-description">
+          Discover top-tier 5G smartphones, smart audio speakers, active noise-cancelling headphones, and next-gen gaming systems engineered for peak performance.
+        </p>
+        <button class="hero-action-btn" (click)="scrollToProducts()">VISIT SHOP</button>
+      </div>
+
+      <div class="hero-visual-col">
+        <div class="hero-img-composition">
+          <img 
+            src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80" 
+            alt="Electronics Store Wireless Headphones and Gadgets" 
+            loading="lazy"
+            class="hero-primary-photo"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTENT CONTAINER (WITH SMOOTH SCROLL TARGET ID) -->
+  <div class="content-container" id="electronics-products-section">
+    <!-- FILTERS SIDEBAR -->
+    <aside class="filters-sidebar">
+      <div class="filters-header">
+        <h3>FILTERS</h3>
+        <button class="reset-btn" (click)="selectedCategory.set('all'); selectedPriceRange.set('all'); selectedBrand.set('all')">
+          Reset
+        </button>
+      </div>
+
+      <!-- Categories -->
+      <div class="filter-box">
+        <h4 class="filter-label">CATEGORY</h4>
+        <div class="filter-options">
+          <label *ngFor="let cat of categories" class="filter-checkbox-label">
+            <input 
+              type="radio" 
+              name="elecCat" 
+              [checked]="selectedCategory() === cat.toLowerCase()"
+              (change)="setCategory(cat)"
+            />
+            <span>{{ cat }}</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Brands -->
+      <div class="filter-box">
+        <h4 class="filter-label">BRAND</h4>
+        <div class="filter-options">
+          <label *ngFor="let b of brands" class="filter-checkbox-label">
+            <input 
+              type="radio" 
+              name="elecBrand" 
+              [checked]="selectedBrand() === b"
+              (change)="setBrand(b)"
+            />
+            <span>{{ b }}</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Price Ranges -->
+      <div class="filter-box">
+        <h4 class="filter-label">PRICE RANGE</h4>
+        <div class="filter-options">
+          <label *ngFor="let r of priceRanges" class="filter-checkbox-label">
+            <input 
+              type="radio" 
+              name="elecPrice" 
+              [checked]="selectedPriceRange() === r.value"
+              (change)="setPriceRange(r.value)"
+            />
+            <span>{{ r.label }}</span>
+          </label>
+        </div>
+      </div>
+    </aside>
+
+    <!-- PRODUCTS MAIN SECTION -->
+    <section class="products-container">
+      <div class="products-top-bar">
+        <span class="results-count">Showing <strong>{{ filteredProducts().length }}</strong> gadgets</span>
+      </div>
+
+      <!-- Loading State -->
+      <div *ngIf="isLoading()" class="loading-state">
+        <div class="spinner"></div>
+        <p>Loading electronics inventory...</p>
+      </div>
+
+      <!-- Product Grid -->
+      <div *ngIf="!isLoading()" class="products-grid">
+        <article 
+          class="product-card" 
+          *ngFor="let product of filteredProducts()"
+          [routerLink]="['/product', product.id]"
+        >
+          <div class="product-img-wrapper">
+            <span *ngIf="product.isSale" class="sale-pill">{{ product.saleTag || 'SALE' }}</span>
+            <img [src]="product.image" [alt]="product.title" loading="lazy" class="product-img" (error)="onImageError(product.id)" />
+          </div>
+
+          <div class="product-details">
+            <div class="category-brand-row">
+              <span class="product-category">{{ product.subCategory || 'TECH' }}</span>
+              <span *ngIf="product.brand" class="product-brand">{{ product.brand }}</span>
+            </div>
+            <h3 class="product-title" [title]="product.title">{{ product.title }}</h3>
+            
+            <div class="product-rating" *ngIf="product.rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-num">({{ product.rating.count }})</span>
+            </div>
+
+            <div class="product-footer-row">
+              <div class="price-wrap">
+                <span class="current-price">${{ product.price }}</span>
+                <span *ngIf="product.originalPrice" class="original-price">${{ product.originalPrice }}</span>
+              </div>
+              <button class="add-btn" (click)="addToCart(product, $event)" title="Add to cart" aria-label="Add to cart">
+                +
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Empty State -->
+      <div *ngIf="!isLoading() && filteredProducts().length === 0" class="empty-state">
+        <p>No electronics match your filter criteria.</p>
+        <button class="reset-btn-large" (click)="selectedCategory.set('all'); selectedPriceRange.set('all'); selectedBrand.set('all')">
+          Clear Filters
+        </button>
+      </div>
+    </section>
+  </div>
+</main>
+
+<app-footer></app-footer>
