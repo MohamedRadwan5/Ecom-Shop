@@ -1,0 +1,92 @@
+<div class="container page">
+  <h1 class="page-title">Contact Us</h1>
+
+  <div class="grid">
+    <div class="left-col">
+      <div class="map-box">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7479.703845160594!2d31.241834057328923!3d30.04855281291422!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145840c7487e04cd%3A0x3377b407fe2c3754!2z2YjYs9i3INin2YTYqNmE2K_YjCDYqNin2Kgg2KfZhNmE2YjZgtiMINi52KfYqNiv2YrZhtiMINmF2K3Yp9mB2LjYqSDYp9mE2YLYp9mH2LHYqeKArA!5e1!3m2!1sar!2seg!4v1788603342165!5m2!1sar!2seg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+
+      <h5 class="location-title">Downtown, Cairo, Egypt</h5>
+     <div class="info">
+    <div class="info-item">
+    <span class="icon">📍</span>
+    <div class="text"><span class="label">Our Location</span> 
+    <a href="https://www.google.com/maps/search/?api=1&query=Downtown+Cairo+Giza+Egypt" >Downtown Cairo, Giza, Egypt</a></div>
+    </div>
+    <div class="info-item">
+    <span class="icon">📞</span>
+    <div class="text"><span class="label">Contact Phone Line</span> 
+    <a href="tel:+201237567891"> +20 1234567891 </a></div>
+    </div>
+    <div class="info-item">
+    <span class="icon">✉️</span>
+        <div class="text"><span class="label">Send an email</span>
+          <a href="mailto:abc@gmail.com"> abc@gmail.com </a></div>
+    </div>
+    <div class="info-item">
+    <span class="icon">🌐</span>
+    <div class="text"><span class="label">Our website</span> 
+    <a href="https://www.ecomshop.com" target="_blank" rel="noopener"> www.ecomshop.com </a></div>
+    </div>
+     </div>
+    </div>
+    <div class="right-col">
+      <div class="contact-card">
+        <h3>Contact</h3>
+
+        <form [action]="formAction" method="POST">
+          <input type="hidden" name="_subject" value="New message from Contact Us page">
+          <input type="hidden" name="_template" value="table">
+
+          <div class="field">
+            <label class="form-label">Name</label>
+            <input type="text" name="name" class="form-control" required>
+          </div>
+          <div class="field">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" required>
+          </div>
+          <div class="field">
+            <label class="form-label">Phone Number</label>
+            <input type="tel" name="phone" class="form-control">
+          </div>
+          <div class="field">
+            <label class="form-label">Message</label>
+            <textarea name="message" rows="5" class="form-control" required></textarea>
+          </div>
+          <button type="submit" class="btn-submit">Submit</button>
+        </form>
+      </div>
+
+      <h2 class="section-title">FAQ Quick Links</h2>
+      <div class="accordion">
+        <div class="accordion-item" *ngFor="let faq of faqs">
+          <button class="accordion-button" [class.open]="faq.open" (click)="toggleFaq(faq)">
+            {{ faq.question }}
+          </button>
+          <div class="accordion-body" *ngIf="faq.open">{{ faq.answer }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="feature-strip">
+  <div class="container feature-grid">
+    <div class="feature-item" *ngFor="let f of features">
+      <div class="feature-icon">{{ f.icon }}</div>
+      <div class="feature-label">{{ f.label }}</div>
+    </div>
+  </div>
+</div>
+  
+<footer>
+  <div class="container footer">
+    <span>© 2026 E-Com Shop. All rights reserved.</span>
+    <span>
+       <a href="#">Terms</a> &nbsp;|&nbsp;
+       <a href="#">Privacy Policy</a>
+     </span>
+  </div>
+</footer>
