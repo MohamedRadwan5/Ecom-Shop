@@ -298,48 +298,207 @@ body.dark-theme .footer-bottom-bar {
   border-color: #334155 !important;
 }
 
-/* Dark Mode Overrides for Auth Pages */
+/* ========================================
+   FORCE LIGHT MODE FOR AUTH PAGES (LOGIN & REGISTER)
+   ======================================== */
 body.dark-theme .login-page,
+body.dark-theme .register-page,
 body.dark-theme .forgot-password-page {
-  background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%) !important;
+  background: radial-gradient(circle at center, #ececec 0%, #d4d4d8 100%) !important;
+  color: #1f2937 !important;
 }
 
+body.dark-theme .register-page {
+  background: #ffffff !important;
+}
+
+body.dark-theme .login-page .navbar,
+body.dark-theme .register-page .navbar,
+body.dark-theme .forgot-password-page .navbar {
+  background: #ffffff !important;
+  border-bottom: 1px solid #e0e0e0 !important;
+}
+
+body.dark-theme .login-page .nav-brand-name,
+body.dark-theme .register-page .nav-brand-name,
+body.dark-theme .forgot-password-page .nav-brand-name {
+  color: #222222 !important;
+}
+
+body.dark-theme .login-page .nav-logo,
+body.dark-theme .register-page .nav-logo,
+body.dark-theme .forgot-password-page .nav-logo {
+  background: #f0f0f0 !important;
+  border: 1px solid #ccc !important;
+  color: inherit !important;
+}
+
+/* Login Card Light Overrides */
 body.dark-theme .login-card,
 body.dark-theme .forgot-password-card {
-  background: #1e293b !important;
-  border: 1px solid #334155 !important;
-  color: #f8fafc !important;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4) !important;
+  background: #ffffff !important;
+  border: none !important;
+  color: #1f2937 !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.05) !important;
 }
 
 body.dark-theme .login-title,
 body.dark-theme .forgot-password-title {
-  color: #f8fafc !important;
+  color: #111827 !important;
 }
 
-body.dark-theme .left-panel {
-  background: #1e293b !important;
+body.dark-theme .login-card .subtitle,
+body.dark-theme .forgot-password-card .subtitle {
+  color: #6b7280 !important;
 }
 
-body.dark-theme .left-panel .hero-text h1,
-body.dark-theme .left-panel .hero-text ul li,
-body.dark-theme .left-panel .dot {
-  color: #f8fafc !important;
+body.dark-theme .login-card .input-wrap,
+body.dark-theme .forgot-password-card .input-wrap {
+  background: #ffffff !important;
+  border: 1.5px solid #d1d5db !important;
+  box-shadow: none !important;
 }
 
-body.dark-theme .right-panel {
-  background: #0f172a !important;
-  color: #f8fafc !important;
+body.dark-theme .login-card .input-wrap:focus-within,
+body.dark-theme .forgot-password-card .input-wrap:focus-within {
+  border-color: #6b7280 !important;
+  box-shadow: 0 0 0 2px rgba(107, 114, 128, 0.15) !important;
 }
 
-body.dark-theme .right-panel h2 {
-  color: #f8fafc !important;
+body.dark-theme .login-card .input-icon,
+body.dark-theme .forgot-password-card .input-icon {
+  color: #6b7280 !important;
 }
 
-body.dark-theme .right-panel label,
-body.dark-theme .dob-label-text,
-body.dark-theme .checkbox-label {
-  color: #cbd5e1 !important;
+body.dark-theme .login-card .input-wrap input,
+body.dark-theme .forgot-password-card .input-wrap input {
+  background: transparent !important;
+  color: #1f2937 !important;
+}
+
+body.dark-theme .login-card .input-wrap input::placeholder,
+body.dark-theme .forgot-password-card .input-wrap input::placeholder {
+  color: #9ca3af !important;
+}
+
+body.dark-theme .login-card .eye-btn,
+body.dark-theme .forgot-password-card .eye-btn {
+  color: #6b7280 !important;
+}
+
+body.dark-theme .login-card .eye-btn:hover,
+body.dark-theme .forgot-password-card .eye-btn:hover {
+  color: #111827 !important;
+}
+
+body.dark-theme .login-card .remember-me {
+  color: #374151 !important;
+}
+
+body.dark-theme .login-card .remember-me input[type='checkbox'] {
+  accent-color: #4b5563 !important;
+}
+
+body.dark-theme .login-card .forgot-link {
+  color: #1e3a8a !important;
+}
+
+body.dark-theme .login-card .forgot-link:hover {
+  color: #1d4ed8 !important;
+}
+
+body.dark-theme .login-card .btn-login,
+body.dark-theme .forgot-password-card .btn-reset {
+  background: #52525b !important;
+  color: #ffffff !important;
+}
+
+body.dark-theme .login-card .btn-login:hover:not(:disabled),
+body.dark-theme .forgot-password-card .btn-reset:hover:not(:disabled) {
+  background: #3f3f46 !important;
+}
+
+body.dark-theme .login-card .register-footer,
+body.dark-theme .forgot-password-card .login-footer {
+  color: #1f2937 !important;
+}
+
+body.dark-theme .login-card .register-link,
+body.dark-theme .forgot-password-card .login-link {
+  color: #111827 !important;
+}
+
+/* Register Page Light Overrides */
+body.dark-theme .register-page .left-panel {
+  background: #c9c9c9 !important;
+}
+
+body.dark-theme .register-page .left-panel .hero-text h1,
+body.dark-theme .register-page .left-panel .hero-text ul li,
+body.dark-theme .register-page .left-panel .dot {
+  color: #1a1a1a !important;
+}
+
+body.dark-theme .register-page .right-panel {
+  background: #ffffff !important;
+  color: #111827 !important;
+}
+
+body.dark-theme .register-page .right-panel h2 {
+  color: #111111 !important;
+}
+
+body.dark-theme .register-page .form-group label,
+body.dark-theme .register-page .dob-label-text,
+body.dark-theme .register-page .checkbox-label {
+  color: #333333 !important;
+}
+
+body.dark-theme .register-page input[type='text'],
+body.dark-theme .register-page input[type='email'],
+body.dark-theme .register-page input[type='password'],
+body.dark-theme .register-page input[type='tel'],
+body.dark-theme .register-page input[type='date'] {
+  background: #ffffff !important;
+  color: #333333 !important;
+  border: 1px solid #bbb !important;
+}
+
+body.dark-theme .register-page input::placeholder {
+  color: #888888 !important;
+}
+
+body.dark-theme .register-page .btn-create {
+  background: #3a3a3a !important;
+  color: #ffffff !important;
+}
+
+body.dark-theme .register-page .btn-create:hover:not(:disabled) {
+  background: #222222 !important;
+}
+
+body.dark-theme .register-page .login-link {
+  color: #666666 !important;
+}
+
+body.dark-theme .register-page .login-link a {
+  color: #333333 !important;
+}
+
+body.dark-theme .register-page .btn-social {
+  background: #ffffff !important;
+  color: #333333 !important;
+  border-color: #ccc !important;
+}
+
+body.dark-theme .register-page .btn-facebook {
+  background: #1877f2 !important;
+  color: #ffffff !important;
+}
+
+body.dark-theme .register-page .btn-apple {
+  background: #111111 !important;
+  color: #ffffff !important;
 }
 
 /* SMOOTH ROUTE / TAB TRANSITION ANIMATION */
