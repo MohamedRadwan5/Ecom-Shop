@@ -133,17 +133,20 @@
         <div class="faq-section">
           <h3 class="faq-title">FAQ Quick Links</h3>
           <div class="accordion-group">
-            <div class="accordion-item" *ngFor="let faq of faqs">
+            <div class="accordion-item" *ngFor="let faq of faqs" [class.open]="faq.open">
               <button 
                 class="accordion-toggle" 
                 [class.open]="faq.open"
                 (click)="toggleFaq(faq)"
+                [attr.aria-expanded]="faq.open"
               >
                 <span>{{ faq.question }}</span>
-                <span class="arrow-icon">{{ faq.open ? '▾' : '▸' }}</span>
+                <span class="arrow-icon">▾</span>
               </button>
-              <div class="accordion-content" *ngIf="faq.open">
-                <p>{{ faq.answer }}</p>
+              <div class="accordion-content">
+                <div class="accordion-inner">
+                  <p>{{ faq.answer }}</p>
+                </div>
               </div>
             </div>
           </div>

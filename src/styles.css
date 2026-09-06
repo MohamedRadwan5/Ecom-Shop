@@ -74,12 +74,94 @@ body.dark-theme .not-found-box {
   color: var(--text-main) !important;
 }
 
+/* Custom Dark Mode Background (#151e30) for Home, Women, Men, Electronics, About, and Contact Us pages */
+body.dark-theme .home-main,
+body.dark-theme .women-page,
+body.dark-theme .men-page,
+body.dark-theme .electronics-page,
+body.dark-theme .about-page,
+body.dark-theme .contact-page {
+  background-color: #151e30 !important;
+}
+
 body.dark-theme .hero-banner-section,
-body.dark-theme .men-hero-section,
 body.dark-theme .women-hero-section,
+body.dark-theme .men-hero-section,
+body.dark-theme .electronics-hero-section,
 body.dark-theme .about-hero-section {
-  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%) !important;
-  border-color: #334155 !important;
+  background: #151e30 !important;
+  border-color: #1f2d47 !important;
+}
+
+/* Dark Mode Filters Sidebar Styling & Smooth Hover Effects */
+body.dark-theme .filters-sidebar {
+  background-color: #1a2436 !important;
+  border-color: #26354f !important;
+}
+
+body.dark-theme .filters-header h3,
+body.dark-theme .filter-label {
+  color: #f8fafc !important;
+}
+
+.filter-checkbox-label span {
+  transition: color 0.2s ease, transform 0.15s ease;
+}
+
+.filter-checkbox-label:hover span {
+  color: #0f172a;
+}
+
+body.dark-theme .filter-checkbox-label {
+  color: #cbd5e1 !important;
+}
+
+body.dark-theme .filter-checkbox-label span {
+  color: #cbd5e1 !important;
+}
+
+body.dark-theme .filter-checkbox-label:hover,
+body.dark-theme .filter-checkbox-label:hover span {
+  color: #ffffff !important;
+}
+
+body.dark-theme .filter-checkbox-label input:checked + span {
+  color: #f59e0b !important;
+  font-weight: 700;
+}
+
+/* Dark Mode Accordion & FAQ Styling */
+body.dark-theme .accordion-item {
+  border-color: #26354f !important;
+}
+
+body.dark-theme .accordion-toggle {
+  background-color: #0f172a !important;
+  color: #cbd5e1 !important;
+}
+
+body.dark-theme .accordion-toggle:hover {
+  background-color: #1a2436 !important;
+  color: #ffffff !important;
+}
+
+body.dark-theme .accordion-toggle.open {
+  background-color: #151e30 !important;
+  color: #f59e0b !important;
+  border-bottom-color: #26354f !important;
+}
+
+body.dark-theme .accordion-toggle.open .arrow-icon {
+  color: #f59e0b !important;
+}
+
+body.dark-theme .accordion-content {
+  background-color: #0f172a !important;
+}
+
+body.dark-theme .accordion-inner p,
+body.dark-theme .accordion-content p {
+  color: #e2e8f0 !important;
 }
 
 body.dark-theme .hero-title,
