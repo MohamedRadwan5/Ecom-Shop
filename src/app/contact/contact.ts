@@ -29,6 +29,7 @@ export class ContactComponent implements OnInit {
   };
 
   isSubmitted = signal(false);
+  isSending = signal(false);
 
   faqs: FAQ[] = [
     {
@@ -66,7 +67,7 @@ export class ContactComponent implements OnInit {
     faq.open = !faq.open;
   }
 
-  onSubmit(event?: Event) {
+  async onSubmit(event?: Event) {
     if (event) {
       event.preventDefault();
       event.stopPropagation();
@@ -76,12 +77,36 @@ export class ContactComponent implements OnInit {
       return;
     }
 
+    this.isSending.set(true);
+
     // Store contact data in the user JSON file / record
     this.authService.saveContactMessage(this.formData);
 
-    this.isSubmitted.set(true);
-    setTimeout(() => {
-      this.formData.message = '';
-    }, 1000);
+    // Send email to mr8161115@gmail.com via FormSubmit AJAX endpoint
+    try {
+      await fetch('https://formsubmit.co/ajax/mr8161115@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: this.formData.name,
+          email: this.formData.email,
+          phone: this.formData.phone || 'N/A',
+          message: this.formData.message,
+          _subject: `📩 New Contact Form Message from ${this.formData.name} - E-Com Shop`,
+          _template: 'table'
+        })
+      });
+    } catch (err) {
+      console.error('Error sending email:', err);
+    } finally {
+      this.isSending.set(false);
+      this.isSubmitted.set(true);
+      setTimeout(() => {
+        this.formData.message = '';
+      }, 1000);
+    }
   }
 }

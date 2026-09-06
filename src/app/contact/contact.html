@@ -121,10 +121,10 @@
             <button 
               type="button" 
               class="submit-btn" 
-              [disabled]="!contactForm.form.valid"
+              [disabled]="!contactForm.form.valid || isSending()"
               (click)="onSubmit($event)"
             >
-              Submit
+              {{ isSending() ? 'Sending...' : 'Submit' }}
             </button>
           </form>
         </div>

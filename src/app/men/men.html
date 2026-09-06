@@ -26,9 +26,11 @@
       <div class="hero-visual-col">
         <div class="hero-img-composition">
           <img 
-            src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=800&q=80" 
+            src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=800&q=75&fm=webp" 
             alt="Men's Collection Suit, Watch, Shoes and Bag" 
-            loading="lazy"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
             class="hero-primary-photo"
           />
         </div>
@@ -139,7 +141,7 @@
         >
           <div class="product-img-wrapper">
             <span *ngIf="product.isSale" class="sale-pill">{{ product.saleTag || 'SALE' }}</span>
-            <img [src]="product.image" [alt]="product.title" loading="lazy" class="product-img" (error)="onImageError(product.id)" />
+            <img [src]="product.image" [alt]="product.title" width="300" height="300" loading="lazy" decoding="async" class="product-img" (error)="onImageError(product.id)" />
           </div>
 
           <div class="product-details">

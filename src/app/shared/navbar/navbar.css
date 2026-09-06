@@ -75,8 +75,27 @@
   display: inline-block;
 }
 
+.nav-item a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2.5px;
+  background: var(--accent-color, #d97706);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .nav-item a:hover {
   color: #0f172a;
+}
+
+.nav-item a:hover::after,
+.nav-item a.active::after {
+  transform: scaleX(1);
 }
 
 .nav-item a.active {
@@ -84,15 +103,18 @@
   font-weight: 800;
 }
 
-.nav-item a.active::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 100%;
-  height: 2.5px;
-  background: #d97706;
-  border-radius: 2px;
+/* Dark theme specific nav item hover and active colors */
+body.dark-theme .nav-item a {
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .nav-item a:hover,
+body.dark-theme .nav-item a.active {
+  color: #ffffff !important;
+}
+
+body.dark-theme .nav-item a::after {
+  background: #f59e0b !important;
 }
 
 /* Search Box & Actions */
@@ -122,16 +144,20 @@
 }
 
 .search-input {
-  border: none;
-  background: transparent;
-  outline: none;
+  border: none !important;
+  background: transparent !important;
+  outline: none !important;
   font-size: 0.85rem;
   color: #1e293b;
   width: 100%;
+  text-align: left !important;
+  padding: 0.2rem 0;
+  box-shadow: none !important;
 }
 
 .search-input::placeholder {
   color: #94a3b8;
+  text-align: left !important;
 }
 
 .search-btn {
@@ -236,39 +262,90 @@
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-out;
+    transition: max-height 0.3s ease-out, background-color 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
   }
 
+  :host-context(.dark-theme) .nav-menu,
+  :host-context(.dark) .nav-menu,
   body.dark-theme .nav-menu {
     background: #1e293b !important;
     border-color: #334155 !important;
   }
 
   .nav-menu.open {
-    max-height: 480px;
+    max-height: 520px;
     padding-bottom: 1.2rem;
-  }
-
-  .nav-list {
-    flex-direction: column;
-    padding: 1.2rem 1.5rem 0.8rem;
-    gap: 0.85rem;
-    align-items: flex-start;
   }
 
   .mobile-search-box {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     background: #f1f5f9;
     border-radius: 9999px;
-    padding: 0.3rem 0.4rem 0.3rem 1rem;
+    padding: 0.35rem 0.4rem 0.35rem 1rem;
     border: 1px solid #e2e8f0;
-    margin: 0.5rem 1.5rem 0.5rem;
+    margin: 1.2rem 1.5rem 0.6rem;
+    box-sizing: border-box;
+    transition: all 0.25s ease;
   }
 
+  .mobile-search-box:focus-within {
+    background: #ffffff;
+    border-color: #cbd5e1;
+    box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
+  }
+
+  .nav-list {
+    display: flex;
+    flex-direction: column;
+    padding: 0.6rem 1.5rem 0.8rem;
+    gap: 1.1rem;
+    align-items: flex-start;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .nav-item {
+    width: 100%;
+    text-align: left;
+  }
+
+  .nav-item a {
+    display: inline-block;
+    text-align: left;
+  }
+
+  :host-context(.dark-theme) .nav-item a,
+  :host-context(.dark) .nav-item a,
+  body.dark-theme .nav-item a {
+    color: #cbd5e1 !important;
+  }
+
+  :host-context(.dark-theme) .nav-item a:hover,
+  :host-context(.dark-theme) .nav-item a.active,
+  :host-context(.dark) .nav-item a:hover,
+  :host-context(.dark) .nav-item a.active,
+  body.dark-theme .nav-item a:hover,
+  body.dark-theme .nav-item a.active {
+    color: #ffffff !important;
+  }
+
+  :host-context(.dark-theme) .mobile-search-box,
+  :host-context(.dark) .mobile-search-box,
   body.dark-theme .mobile-search-box {
     background: #0f172a !important;
     border-color: #334155 !important;
+  }
+
+  :host-context(.dark-theme) .mobile-search-box:focus-within,
+  :host-context(.dark) .mobile-search-box:focus-within,
+  body.dark-theme .mobile-search-box:focus-within {
+    border-color: #f59e0b !important;
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.2) !important;
   }
 
   .search-box {
