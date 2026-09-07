@@ -845,10 +845,33 @@ export class ProductService {
     return of(all);
   }
 
+  private findFallbackProduct(id: string | number): Product | undefined {
+    const all = [
+      ...this.fallbackMenProducts,
+      ...this.fallbackWomenProducts,
+      ...this.fallbackElectronicsProducts
+    ].filter(p => this.isValidProduct(p));
+    return all.find(p => String(p.id) === String(id));
+  }
+
   getProductById(id: string | number): Observable<Product | undefined> {
-    return this.getAllProducts().pipe(
-      map(products => products.find(p => String(p.id) === String(id)))
-    );
+    const isApiId = !isNaN(Number(id)) && !String(id).includes('-');
+
+    if (isApiId) {
+      return this.http.get<any>(`${this.fakeStoreUrl}/products/${id}`).pipe(
+        map(apiProd => {
+          if (apiProd && apiProd.id) {
+            const category = apiProd.category || '';
+            const type = category.includes('men') ? 'men' : category.includes('women') ? 'women' : 'electronics';
+            return this.mapFakeStoreProduct(apiProd, type);
+          }
+          return this.findFallbackProduct(id);
+        }),
+        catchError(() => of(this.findFallbackProduct(id)))
+      );
+    }
+
+    return of(this.findFallbackProduct(id));
   }
 
   private mapFakeStoreProduct(item: any, type: string): Product {
