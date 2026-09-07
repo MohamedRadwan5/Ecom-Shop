@@ -11,11 +11,10 @@
 
 <!-- ===== MAIN LAYOUT ===== -->
 <div class="register-page">
-
   <!-- LEFT PANEL -->
   <div class="left-panel">
     <div class="hero-text">
-      <h1>JOIN<br>E-COM<br>SHOP</h1>
+      <h1>JOIN<br />E-COM<br />SHOP</h1>
       <ul>
         <li><span class="dot">•</span> Exclusive Deals</li>
         <li><span class="dot">•</span> Easy Order Tracking</li>
@@ -31,8 +30,7 @@
     <!-- Alerts -->
     @if (successMessage()) {
       <div class="alert alert-success">
-        ✅ {{ successMessage() }}
-        <br><small>Downloaded as <strong>users.json</strong></small>
+        ✅ {{ successMessage() }} <br /><small>Downloaded as <strong>users.json</strong></small>
       </div>
     }
     @if (errorMessage()) {
@@ -40,17 +38,25 @@
     }
 
     <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
-
       <!-- First Name -->
       <div class="form-group">
         <label for="firstName">First Name</label>
-        <input id="firstName" type="text" formControlName="firstName"
-          [class.input-error]="isInvalid('firstName')" />
+        <input
+          id="firstName"
+          type="text"
+          formControlName="firstName"
+          placeholder="Enter Your First Name"
+          [class.input-error]="isInvalid('firstName')"
+        />
         @if (isInvalid('firstName')) {
           <span class="error-msg">
-            @if (f('firstName').hasError('required')) { First name is required. }
-            @else if (f('firstName').hasError('minlength')) { At least 2 characters. }
-            @else if (f('firstName').hasError('pattern')) { Letters only. }
+            @if (f('firstName').hasError('required')) {
+              First name is required.
+            } @else if (f('firstName').hasError('minlength')) {
+              At least 2 characters.
+            } @else if (f('firstName').hasError('pattern')) {
+              Letters only.
+            }
           </span>
         }
       </div>
@@ -58,13 +64,22 @@
       <!-- Last Name -->
       <div class="form-group">
         <label for="lastName">Last Name</label>
-        <input id="lastName" type="text" formControlName="lastName"
-          [class.input-error]="isInvalid('lastName')" />
+        <input
+          id="lastName"
+          type="text"
+          formControlName="lastName"
+            placeholder="Enter Your Last Name"
+          [class.input-error]="isInvalid('lastName')"
+        />
         @if (isInvalid('lastName')) {
           <span class="error-msg">
-            @if (f('lastName').hasError('required')) { Last name is required. }
-            @else if (f('lastName').hasError('minlength')) { At least 2 characters. }
-            @else if (f('lastName').hasError('pattern')) { Letters only. }
+            @if (f('lastName').hasError('required')) {
+              Last name is required.
+            } @else if (f('lastName').hasError('minlength')) {
+              At least 2 characters.
+            } @else if (f('lastName').hasError('pattern')) {
+              Letters only.
+            }
           </span>
         }
       </div>
@@ -72,12 +87,20 @@
       <!-- Email -->
       <div class="form-group">
         <label for="email">Email</label>
-        <input id="email" type="email" formControlName="email"
-          [class.input-error]="isInvalid('email')" />
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+            placeholder="Enter Your Email"
+          [class.input-error]="isInvalid('email')"
+        />
         @if (isInvalid('email')) {
           <span class="error-msg">
-            @if (f('email').hasError('required')) { Email is required. }
-            @else { Enter a valid email. }
+            @if (f('email').hasError('required')) {
+              Email is required.
+            } @else {
+              Enter a valid email.
+            }
           </span>
         }
       </div>
@@ -86,9 +109,13 @@
       <div class="form-group">
         <label for="password">Password</label>
         <div class="input-icon-wrap">
-          <input id="password" [type]="showPassword() ? 'text' : 'password'"
-            formControlName="password" placeholder="Password"
-            [class.input-error]="isInvalid('password')" />
+          <input
+            id="password"
+            [type]="showPassword() ? 'text' : 'password'"
+            formControlName="password"
+            placeholder=" Enter Your Password"
+            [class.input-error]="isInvalid('password')"
+          />
           <button
             type="button"
             class="eye-btn"
@@ -96,13 +123,35 @@
             [attr.aria-label]="showPassword() ? 'Hide password' : 'Show password'"
           >
             @if (showPassword()) {
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                 <circle cx="12" cy="12" r="3"></circle>
               </svg>
             } @else {
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"
+                ></path>
                 <line x1="1" y1="1" x2="23" y2="23"></line>
               </svg>
             }
@@ -110,9 +159,13 @@
         </div>
         @if (isInvalid('password')) {
           <span class="error-msg">
-            @if (f('password').hasError('required')) { Password is required. }
-            @else if (f('password').hasError('minlength')) { At least 8 characters. }
-            @else if (f('password').hasError('weakPassword')) { Add uppercase letter &amp; number. }
+            @if (f('password').hasError('required')) {
+              Password is required.
+            } @else if (f('password').hasError('minlength')) {
+              At least 8 characters.
+            } @else if (f('password').hasError('weakPassword')) {
+              Add uppercase letter &amp; number.
+            }
           </span>
         }
       </div>
@@ -120,13 +173,20 @@
       <!-- Phone Number -->
       <div class="form-group">
         <label for="phoneNumber">Phone Number</label>
-        <input id="phoneNumber" type="tel" formControlName="phoneNumber"
-          placeholder="Date of Birth"
-          [class.input-error]="isInvalid('phoneNumber')" />
+        <input
+          id="phoneNumber"
+          type="tel"
+          formControlName="phoneNumber"
+          placeholder="Enter Your Phone Number"
+          [class.input-error]="isInvalid('phoneNumber')"
+        />
         @if (isInvalid('phoneNumber')) {
           <span class="error-msg">
-            @if (f('phoneNumber').hasError('required')) { Phone is required. }
-            @else { Enter 10-15 digits. }
+            @if (f('phoneNumber').hasError('required')) {
+              Phone is required.
+            } @else {
+              Enter 10-15 digits.
+            }
           </span>
         }
       </div>
@@ -135,29 +195,37 @@
       <div class="dob-check-block">
         <!-- DOB row with orange checkbox -->
         <label class="dob-row">
-          <input type="checkbox" class="orange-check" checked disabled />
+          
           <span class="dob-label-text">Date of Birth</span>
         </label>
-        <input id="dateOfBirth" type="date" formControlName="dateOfBirth"
+        <input
+          id="dateOfBirth"
+          type="date"
+          formControlName="dateOfBirth"
           class="dob-hidden-input"
-          [class.input-error]="isInvalid('dateOfBirth')" />
+          [class.input-error]="isInvalid('dateOfBirth')"
+        />
         @if (isInvalid('dateOfBirth')) {
           <span class="error-msg">
-            @if (f('dateOfBirth').hasError('required')) { Date of birth is required. }
-            @else if (f('dateOfBirth').hasError('underage')) { Must be 18+. }
+            @if (f('dateOfBirth').hasError('required')) {
+              Date of birth is required.
+            } @else if (f('dateOfBirth').hasError('underage')) {
+              Must be 18+.
+            }
           </span>
         }
       </div>
 
       <!-- Submit -->
       <button type="submit" class="btn-create" [disabled]="isLoading()">
-        @if (isLoading()) { Creating... } @else { Create Account }
+        @if (isLoading()) {
+          Creating...
+        } @else {
+          Create Account
+        }
       </button>
 
-      <p class="login-link">
-        Already have an account? <a routerLink="/login">Log in.</a>
-      </p>
-
+      <p class="login-link">Already have an account? <a routerLink="/login">Log in.</a></p>
     </form>
   </div>
 </div>
