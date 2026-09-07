@@ -241,7 +241,80 @@ body.dark-theme .nav-item a::after {
   display: none;
 }
 
-/* Responsive */
+/* Intermediate Desktop/Laptop Screens (1025px - 1200px) */
+@media (max-width: 1200px) and (min-width: 901px) {
+  .top-nav-container {
+    padding: 0.8rem 1rem;
+    gap: 1rem;
+  }
+
+  .nav-list {
+    gap: 1rem;
+  }
+
+  .nav-item a {
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+  }
+
+  .search-box {
+    width: 160px;
+  }
+
+  .search-box:focus-within {
+    width: 190px;
+  }
+
+  .brand-link {
+    font-size: 1.15rem;
+  }
+}
+
+/* Tighter Screens just before hamburger (901px - 1024px) */
+@media (max-width: 1024px) and (min-width: 901px) {
+  .top-nav-container {
+    padding: 0.75rem 0.75rem;
+    gap: 0.6rem;
+  }
+
+  .nav-list {
+    gap: 0.65rem;
+  }
+
+  .nav-item a {
+    font-size: 0.75rem;
+    letter-spacing: 0.3px;
+    padding: 0.4rem 0.1rem;
+  }
+
+  .search-box {
+    width: 130px;
+    padding: 0.2rem 0.3rem 0.2rem 0.6rem;
+  }
+
+  .search-box:focus-within {
+    width: 160px;
+  }
+
+  .search-input {
+    font-size: 0.78rem;
+  }
+
+  .action-btn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .nav-actions {
+    gap: 0.5rem;
+  }
+
+  .brand-title {
+    font-size: 1.05rem;
+  }
+}
+
+/* Responsive (Mobile & Tablets up to 900px) */
 @media (max-width: 900px) {
   .mobile-toggle {
     display: flex;
