@@ -74,13 +74,14 @@ body.dark-theme .not-found-box {
   color: var(--text-main) !important;
 }
 
-/* Custom Dark Mode Background (#151e30) for Home, Women, Men, Electronics, About, and Contact Us pages */
+/* Custom Dark Mode Background (#151e30) for Home, Women, Men, Electronics, About, Contact Us, and Checkout/Cart pages */
 body.dark-theme .home-main,
 body.dark-theme .women-page,
 body.dark-theme .men-page,
 body.dark-theme .electronics-page,
 body.dark-theme .about-page,
-body.dark-theme .contact-page {
+body.dark-theme .contact-page,
+body.dark-theme .checkout-page {
   background-color: #151e30 !important;
 }
 
@@ -91,6 +92,85 @@ body.dark-theme .electronics-hero-section,
 body.dark-theme .about-hero-section {
   background: #151e30 !important;
   border-color: #1f2d47 !important;
+}
+
+/* Dark Mode Checkout / Cart Page Enhancements */
+body.dark-theme .checkout-section,
+body.dark-theme .summary-card,
+body.dark-theme .empty-cart-box,
+body.dark-theme .order-success-card {
+  background-color: #1a2436 !important;
+  border-color: #26354f !important;
+}
+
+body.dark-theme .section-title-row h2,
+body.dark-theme .empty-cart-box h2,
+body.dark-theme .order-success-card h2,
+body.dark-theme .summary-title,
+body.dark-theme .summary-total-row span,
+body.dark-theme .summary-row strong,
+body.dark-theme .item-line-total,
+body.dark-theme .payment-card-content strong,
+body.dark-theme .meta-item strong {
+  color: #ffffff !important;
+}
+
+body.dark-theme .step-num {
+  background: #f59e0b !important;
+  color: #0f172a !important;
+}
+
+body.dark-theme .payment-card {
+  background-color: #0f172a !important;
+  border-color: #26354f !important;
+}
+
+body.dark-theme .payment-card:hover {
+  border-color: #475569 !important;
+  background-color: #151e30 !important;
+}
+
+body.dark-theme .payment-card.selected {
+  border-color: #f59e0b !important;
+  background-color: rgba(245, 158, 11, 0.1) !important;
+}
+
+body.dark-theme .cart-item-row,
+body.dark-theme .section-title-row {
+  border-bottom-color: #26354f !important;
+}
+
+body.dark-theme .variant-tag {
+  background-color: #0f172a !important;
+  color: #94a3b8 !important;
+}
+
+body.dark-theme .item-qty-wrap {
+  border-color: #334155 !important;
+}
+
+body.dark-theme .qty-display {
+  background-color: #0f172a !important;
+  color: #f8fafc !important;
+}
+
+body.dark-theme .place-order-btn,
+body.dark-theme .empty-cart-box .btn-primary,
+body.dark-theme .order-success-card .btn-primary {
+  background: #f59e0b !important;
+  color: #0f172a !important;
+}
+
+body.dark-theme .place-order-btn:hover,
+body.dark-theme .empty-cart-box .btn-primary:hover,
+body.dark-theme .order-success-card .btn-primary:hover {
+  background: #d97706 !important;
+  color: #ffffff !important;
+}
+
+body.dark-theme .free-shipping-note {
+  background: rgba(22, 163, 74, 0.15) !important;
+  color: #4ade80 !important;
 }
 
 /* Dark Mode Filters Sidebar Styling & Smooth Hover Effects */
