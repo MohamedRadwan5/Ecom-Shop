@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
   form = this.fb.group({
     identifier: ['', [Validators.required]],
     password: ['', [Validators.required]],
-    rememberMe: [false],
+    rememberMe: [true],
   });
 
   togglePassword(): void {

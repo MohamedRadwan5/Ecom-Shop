@@ -110,7 +110,6 @@ export class RegisterComponent {
 
     if (result.success) {
       this.successMessage.set(result.message + ' Redirecting to login...');
-      this.authService.downloadUsersJson();
       this.form.reset();
       setTimeout(() => {
         this.router.navigate(['/login'], { queryParams: { registered: 'true' } });

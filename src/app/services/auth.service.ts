@@ -88,9 +88,8 @@ export class AuthService {
     }
 
     const sessionData = { id: user.id, email: user.email, name: `${user.firstName} ${user.lastName}` };
-    if (rememberMe) {
-      localStorage.setItem('ecom_current_user', JSON.stringify(sessionData));
-    } else {
+    localStorage.setItem('ecom_current_user', JSON.stringify(sessionData));
+    if (!rememberMe) {
       sessionStorage.setItem('ecom_current_user', JSON.stringify(sessionData));
     }
 
